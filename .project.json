@@ -1,0 +1,31 @@
+{
+    "dataBinding": {
+        "/webapp/view/NewItem.view.xml": {
+            "entitySet": "/SupplySet"
+        }, 
+        "/webapp/view/NewSupplier.view.xml": {
+            "entitySet": "/SupplierSet"
+        }, 
+        "/webapp/view/ItemRemoved.view.xml": {
+            "entitySet": "/SupplySet"
+        }, 
+        "/webapp/view/NewShipment.view.xml": {
+            "entitySet": "/ShipmentSet"
+        }, 
+        "/webapp/view/EditItem.view.xml": {
+            "entitySet": "/SupplySet"
+        }, 
+        "/webapp/view/ItemDetail.view.xml": {
+            "entitySet": "/SupplySet"
+        }, 
+        "/webapp/view/Home.view.xml": {
+            "entitySet": ""
+        }, 
+        "/webapp/view/Dialog2.view.xml": {
+            "entitySet": "/SupplySet"
+        }, 
+        "/webapp/view/Dialog1.view.xml": {
+            "entitySet": ""
+        } 
+    }
+}

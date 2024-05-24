@@ -1,0 +1,139 @@
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="e0dd5f8b5e05b67d1af30efe" xml:lang="en" sap:schema-version="0000" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityContainer Name="e0dd5f8b5e05b67d1af30efe_Entities" m:IsDefaultEntityContainer="true">
+                <EntitySet Name="SupplySet" EntityType="e0dd5f8b5e05b67d1af30efe.Supply" sap:creatable="true" sap:updatable="true" sap:deletable="true"/>
+                <AssociationSet Name="SupplyCategory1Category" Association="e0dd5f8b5e05b67d1af30efe.SupplyCategory1Category" sap:creatable="true" sap:updatable="true" sap:deletable="true">
+                    <End EntitySet="SupplySet" Role="FromRole_SupplyCategory1Category"/>
+                    <End EntitySet="CategorySet" Role="ToRole_SupplyCategory1Category"/>
+                </AssociationSet>
+                <AssociationSet Name="SupplyShipmentShipment" Association="e0dd5f8b5e05b67d1af30efe.SupplyShipmentShipment" sap:creatable="true" sap:updatable="true" sap:deletable="true">
+                    <End EntitySet="SupplySet" Role="FromRole_SupplyShipmentShipment"/>
+                    <End EntitySet="ShipmentSet" Role="ToRole_SupplyShipmentShipment"/>
+                </AssociationSet>
+                <EntitySet Name="SupplierSet" EntityType="e0dd5f8b5e05b67d1af30efe.Supplier" sap:creatable="true" sap:updatable="true" sap:deletable="true"/>
+                <AssociationSet Name="SupplierShipmentShipment" Association="e0dd5f8b5e05b67d1af30efe.SupplierShipmentShipment" sap:creatable="true" sap:updatable="true" sap:deletable="true">
+                    <End EntitySet="SupplierSet" Role="FromRole_SupplierShipmentShipment"/>
+                    <End EntitySet="ShipmentSet" Role="ToRole_SupplierShipmentShipment"/>
+                </AssociationSet>
+                <EntitySet Name="CategorySet" EntityType="e0dd5f8b5e05b67d1af30efe.Category" sap:creatable="true" sap:updatable="true" sap:deletable="true"/>
+                <EntitySet Name="ShipmentSet" EntityType="e0dd5f8b5e05b67d1af30efe.Shipment" sap:creatable="true" sap:updatable="true" sap:deletable="true"/>
+                <AssociationSet Name="ShipmentSupplierSupplier" Association="e0dd5f8b5e05b67d1af30efe.ShipmentSupplierSupplier" sap:creatable="true" sap:updatable="true" sap:deletable="true">
+                    <End EntitySet="ShipmentSet" Role="FromRole_ShipmentSupplierSupplier"/>
+                    <End EntitySet="SupplierSet" Role="ToRole_ShipmentSupplierSupplier"/>
+                </AssociationSet>
+                <AssociationSet Name="ShipmentSupplySupply" Association="e0dd5f8b5e05b67d1af30efe.ShipmentSupplySupply" sap:creatable="true" sap:updatable="true" sap:deletable="true">
+                    <End EntitySet="ShipmentSet" Role="FromRole_ShipmentSupplySupply"/>
+                    <End EntitySet="SupplySet" Role="ToRole_ShipmentSupplySupply"/>
+                </AssociationSet>
+            </EntityContainer>
+            <EntityType Name="Supply">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ID"/>
+                <Property Name="Name" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Name"/>
+                <Property Name="Category" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Category"/>
+                <Property Name="Amount" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Amount"/>
+                <Property Name="___FK_8e4000c6a6273f811b0553fe_00017" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="___FK_8e4000c6a6273f811b0553fe_00017"/>
+                <Property Name="SupplyImage" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Image"/>
+                <Property Name="Location" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Location"/>
+                <Property Name="AmountType" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="AmountType"/>
+                <NavigationProperty Name="Category1" Relationship="e0dd5f8b5e05b67d1af30efe.SupplyCategory1Category" FromRole="FromRole_SupplyCategory1Category" ToRole="ToRole_SupplyCategory1Category"/>
+                <NavigationProperty Name="Shipment" Relationship="e0dd5f8b5e05b67d1af30efe.SupplyShipmentShipment" FromRole="FromRole_SupplyShipmentShipment" ToRole="ToRole_SupplyShipmentShipment"/>
+            </EntityType>
+            <Association Name="SupplyCategory1Category">
+                <End Type="e0dd5f8b5e05b67d1af30efe.Supply" Multiplicity="1" Role="FromRole_SupplyCategory1Category"/>
+                <End Type="e0dd5f8b5e05b67d1af30efe.Category" Multiplicity="1" Role="ToRole_SupplyCategory1Category"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_SupplyCategory1Category">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="FromRole_SupplyCategory1Category">
+                        <PropertyRef Name="___FK_8e4000c6a6273f811b0553fe_00017"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="SupplyShipmentShipment">
+                <End Type="e0dd5f8b5e05b67d1af30efe.Supply" Multiplicity="1" Role="FromRole_SupplyShipmentShipment"/>
+                <End Type="e0dd5f8b5e05b67d1af30efe.Shipment" Multiplicity="*" Role="ToRole_SupplyShipmentShipment"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_SupplyShipmentShipment">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="ToRole_SupplyShipmentShipment">
+                        <PropertyRef Name="___FK_ec0167b43cf54a931b111b70_00003"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityType Name="Supplier">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ID"/>
+                <Property Name="Name" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Name"/>
+                <Property Name="Phone" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Phone"/>
+                <Property Name="Address" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Address"/>
+                <NavigationProperty Name="Shipment" Relationship="e0dd5f8b5e05b67d1af30efe.SupplierShipmentShipment" FromRole="FromRole_SupplierShipmentShipment" ToRole="ToRole_SupplierShipmentShipment"/>
+            </EntityType>
+            <Association Name="SupplierShipmentShipment">
+                <End Type="e0dd5f8b5e05b67d1af30efe.Supplier" Multiplicity="1" Role="FromRole_SupplierShipmentShipment"/>
+                <End Type="e0dd5f8b5e05b67d1af30efe.Shipment" Multiplicity="*" Role="ToRole_SupplierShipmentShipment"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_SupplierShipmentShipment">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="ToRole_SupplierShipmentShipment">
+                        <PropertyRef Name="___FK_ec0167b43cf54a931b111b70_00005"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityType Name="Category">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ID"/>
+                <Property Name="Name" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Name"/>
+            </EntityType>
+            <EntityType Name="Shipment">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ID"/>
+                <Property Name="___FK_ec0167b43cf54a931b111b70_00003" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="___FK_ec0167b43cf54a931b111b70_00003"/>
+                <Property Name="___FK_ec0167b43cf54a931b111b70_00005" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="___FK_ec0167b43cf54a931b111b70_00005"/>
+                <Property Name="Date" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Date"/>
+                <Property Name="UnitPrice" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="UnitPrice"/>
+                <Property Name="Quantity" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Cuanity"/>
+                <Property Name="___FK_0568e6b46c2f810c1b112290_00003" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="___FK_0568e6b46c2f810c1b112290_00003"/>
+                <Property Name="___FK_0568e6b46c2f810c1b112290_00007" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="___FK_0568e6b46c2f810c1b112290_00007"/>
+                <NavigationProperty Name="Supplier" Relationship="e0dd5f8b5e05b67d1af30efe.ShipmentSupplierSupplier" FromRole="FromRole_ShipmentSupplierSupplier" ToRole="ToRole_ShipmentSupplierSupplier"/>
+                <NavigationProperty Name="Supply" Relationship="e0dd5f8b5e05b67d1af30efe.ShipmentSupplySupply" FromRole="FromRole_ShipmentSupplySupply" ToRole="ToRole_ShipmentSupplySupply"/>
+            </EntityType>
+            <Association Name="ShipmentSupplierSupplier">
+                <End Type="e0dd5f8b5e05b67d1af30efe.Shipment" Multiplicity="1" Role="FromRole_ShipmentSupplierSupplier"/>
+                <End Type="e0dd5f8b5e05b67d1af30efe.Supplier" Multiplicity="1" Role="ToRole_ShipmentSupplierSupplier"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_ShipmentSupplierSupplier">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="FromRole_ShipmentSupplierSupplier">
+                        <PropertyRef Name="___FK_0568e6b46c2f810c1b112290_00003"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ShipmentSupplySupply">
+                <End Type="e0dd5f8b5e05b67d1af30efe.Shipment" Multiplicity="1" Role="FromRole_ShipmentSupplySupply"/>
+                <End Type="e0dd5f8b5e05b67d1af30efe.Supply" Multiplicity="1" Role="ToRole_ShipmentSupplySupply"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_ShipmentSupplySupply">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="FromRole_ShipmentSupplySupply">
+                        <PropertyRef Name="___FK_0568e6b46c2f810c1b112290_00007"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
